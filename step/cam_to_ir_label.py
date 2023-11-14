@@ -12,6 +12,7 @@ from misc import torchutils, imutils
 
 def _work(process_id, infer_dataset, args):
 
+    import pdb; pdb.set_trace()
     databin = infer_dataset[process_id]
     infer_data_loader = DataLoader(databin, shuffle=False, num_workers=0, pin_memory=False)
 
@@ -53,5 +54,6 @@ def run(args):
     dataset = torchutils.split_dataset(dataset, args.num_workers)
 
     print('[ ', end='')
-    multiprocessing.spawn(_work, nprocs=args.num_workers, args=(dataset, args), join=True)
+    _work(1, dataset,args)
+    # multiprocessing.spawn(_work, nprocs=args.num_workers, args=(dataset, args), join=True)
     print(']')
