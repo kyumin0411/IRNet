@@ -51,7 +51,7 @@ def _work(process_id, model, dataset, args):
             highres_cam = highres_cam[valid_cat]
             highres_cam /= F.adaptive_max_pool2d(highres_cam, (1, 1)) + 1e-5
 
-            import pdb; pdb.set_trace()
+            # import pdb; pdb.set_trace()
             # save cams
             np.save(os.path.join(args.cam_out_dir, img_name + '.npy'),
                     {"keys": valid_cat, "cam": strided_cam.cpu(), "high_res": highres_cam.cpu().numpy()})
@@ -61,7 +61,7 @@ def _work(process_id, model, dataset, args):
 
 
 def run(args):
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     model = getattr(importlib.import_module(args.cam_network), 'CAM')()
     model.load_state_dict(torch.load(args.cam_weights_name + '.pth'), strict=True)
     model.eval()
