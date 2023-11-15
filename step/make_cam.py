@@ -74,7 +74,8 @@ def run(args):
     dataset = torchutils.split_dataset(dataset, n_gpus)
 
     print('[ ', end='')
-    multiprocessing.spawn(_work, nprocs=n_gpus, args=(model, dataset, args), join=True)
+    _work(1, dataset,args)
+    # multiprocessing.spawn(_work, nprocs=n_gpus, args=(model, dataset, args), join=True)
     print(']')
 
     torch.cuda.empty_cache()
