@@ -15,6 +15,7 @@ cudnn.enabled = True
 
 def _work(process_id, model, dataset, args):
 
+    import pdb; pdb.set_trace()
     databin = dataset[process_id]
     n_gpus = torch.cuda.device_count()
     data_loader = DataLoader(databin, shuffle=False, num_workers=args.num_workers // n_gpus, pin_memory=False)
@@ -61,7 +62,7 @@ def _work(process_id, model, dataset, args):
 
 
 def run(args):
-    # import pdb; pdb.set_trace()
+    import pdb; pdb.set_trace()
     model = getattr(importlib.import_module(args.cam_network), 'CAM')()
     model.load_state_dict(torch.load(args.cam_weights_name + '.pth'), strict=True)
     model.eval()
