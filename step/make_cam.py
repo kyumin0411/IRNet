@@ -74,7 +74,7 @@ def run(args):
     dataset = torchutils.split_dataset(dataset, n_gpus)
 
     print('[ ', end='')
-    _work(1, dataset,args)
+    _work(1, model, dataset,args)
     # multiprocessing.spawn(_work, nprocs=n_gpus, args=(model, dataset, args), join=True)
     print(']')
 
