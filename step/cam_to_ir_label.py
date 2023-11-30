@@ -54,7 +54,7 @@ def run(args):
     dataset = torchutils.split_dataset(dataset, args.num_workers)
 
     print('[ ', end='')
-    # _work(1, dataset,args)
-    multiprocessing.spawn(_work, nprocs=args.num_workers, args=(dataset, args), join=True)
+    _work(1, dataset,args)
+    # multiprocessing.spawn(_work, nprocs=args.num_workers, args=(dataset, args), join=True)
     print(']')
     import pdb; pdb.set_trace()
