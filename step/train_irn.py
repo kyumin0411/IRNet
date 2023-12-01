@@ -14,7 +14,7 @@ def run(args):
     model = getattr(importlib.import_module(args.irn_network), 'AffinityDisplacementLoss')(
         path_index)
 
-    train_dataset = voc12.dataloader.VOC12AffinityDataset(args.train_list,
+    train_dataset = voc12.dataloader.VOC12AffinityDataset(args.infer_list,
                                                           label_dir=args.ir_label_out_dir,
                                                           voc12_root=args.voc12_root,
                                                           indices_from=path_index.src_indices,
